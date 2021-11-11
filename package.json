@@ -1,0 +1,12 @@
+{
+  "name": "kyc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^3.4.2",
+    "bn.js": "^5.2.0",
+    "near-api-js": "^0.43.1",
+    "prisma": "^3.4.2"
+  }
+}

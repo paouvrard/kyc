@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+ }
+
+model kycRecords {
+  id              String    @id(map: "kyc_records_pkey") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  createdAt       DateTime? @default(now()) @db.Timestamptz(6)
+  firstName       String    @db.VarChar
+  lastName        String    @db.VarChar
+  country         String    @db.VarChar
+  account         String    @unique(map: "kyc_records_near_account_id_key") @db.VarChar
+  applicantId     String?   @unique(map: "kyc_records_onfido_applicant_id_key") @db.VarChar
+  checkId         String?   @unique(map: "kyc_records_onfido_check_id_key") @db.VarChar
+  status          String?   @db.VarChar
+  result          String?   @db.VarChar
+  provider        String    @db.VarChar
+  transactionHash String?   @db.VarChar
+}
